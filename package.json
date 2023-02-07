@@ -1,0 +1,15 @@
+{
+  "name": "victron-ble-monitor",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^2.2.0",
+    "yarn": "^1.22.19"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "install": "cd client && yarn && yarn build"
+  }
+}

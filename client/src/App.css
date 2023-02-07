@@ -1,0 +1,40 @@
+body {
+  height: 100vh;
+}
+.App {
+  text-align: center;
+  font-family: "Helvetica", monospace;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.msg {
+  flex: 1;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.msg:empty, #map:empty {
+  display: none;
+}
+#map{
+  flex: 1;
+  width: 100vw;
+}
+.Devices {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.Devices > * {
+  font-size: .8em;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 400px;
+  min-height: 400px;
+  border-bottom: 1px solid #999;
+  border-right: 1px solid #999;
+}
