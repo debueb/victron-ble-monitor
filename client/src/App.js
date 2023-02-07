@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import socketIOClient from 'socket.io-client';
 import TimeAgo from 'react-timeago';
 import './App.css';
+import BatteryMonitor from './BatteryMonitor';
 
 class App extends Component {
   // Initialize state
@@ -38,7 +39,6 @@ class App extends Component {
   }
 
   updateDevices = (devices) => {
-    console.log(devices);
     if (devices && devices.length > 0 ){
       this.setState({ devices, msg: null });
     }
@@ -50,11 +50,15 @@ class App extends Component {
         <div className="App">
             <div class="Devices">
               {this.state.devices.map((device) => (
-                <div key={device.address}>
-                  <div><b>{device.name}</b> - Victron Energy {device.data.model_name}</div>
-                  <div>{device.data.soc}</div>
-                  <div>{device.updates.length}</div>
-                  {/* <div>{time ? <TimeAgo date={time}/> : 'unknown'}</div> */}
+                <div class="Device" key={device.address}>
+                  <div class="Device-Text"><b>{device.name}</b> - Victron Energy {device.data.model_name}</div>
+                  <div class="Device-Text">Last Update: <TimeAgo date={device.updates[device.updates.length-1].timestamp} /></div>
+                  {device.data.soc && 
+                    <>
+                      <div class="Device-Text">Last SoC (%): {device.data.soc}</div>
+                      <BatteryMonitor data={device.updates}/>
+                    </>
+                  }
                 </div>
               ))}
             </div>

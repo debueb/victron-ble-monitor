@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "moment": "^2.29.4",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-scripts": "1.1.4",
+    "react-scripts": "2.1.8",
     "react-timeago": "^4.4.0",
+    "recharts": "^2.3.2",
     "socket.io-client": "^2.2.0"
   },
   "scripts": {
@@ -15,5 +17,11 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:6060"
+  "proxy": "http://localhost:6060",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
