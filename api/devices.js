@@ -7,8 +7,13 @@ const devices = (io) => {
 
   let deviceMap = new Map();
 
+  const sortAndJsonize = () => {
+    deviceArray = Array.from(deviceMap.values());
+    return deviceArray.sort((a, b) => a.name.localeCompare(b.name))
+  }
+
   router.get('/api/devices', (req, res) => {
-    res.json(deviceMap)
+    res.json(sortAndJsonize())
   });
 
   router.post('/api/device', (req, res) => {
@@ -23,11 +28,8 @@ const devices = (io) => {
     }
     device.updates = updates;
     deviceMap.set(device.address, device);
-   
-    deviceArray = Array.from(deviceMap.values());
-    deviceArray.sort((a, b) => a.name.localeCompare(b.name))
 
-    io.emit('DevicesUpdate', deviceArray);
+    io.emit('DevicesUpdate', sortAndJsonize());
     res.status(200).end()
   });
   return router;
