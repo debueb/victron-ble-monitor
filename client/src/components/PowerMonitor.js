@@ -41,7 +41,7 @@ export default class PowerMonitor extends PureComponent {
               labelFormatter={dateFormatter}
             />
             <Legend verticalAlign="top" height={36}/>
-            <Area name="Power (W)" type="monotone" dataKey="consumption" stroke="#2EB6B2" fill="#2EB66E" />
+            <Area name="Power (W)" type="monotone" dataKey="power" stroke="#2EB6B2" fill="#2EB66E" />
           </AreaChart>
         </ResponsiveContainer>
       </div>
