@@ -13,38 +13,38 @@ export default class SolarPowerMonitor extends PureComponent {
     };
 
     return (
-      <ResponsiveContainer width="100%" height="100%">
-        <AreaChart
-          width={500}
-          height={350}
-          data={data}
-          margin={{
-            top: 10,
-            right: 30,
-            left: 0,
-            bottom: 0,
-          }}
-        >
-          <XAxis 
-            dataKey="timestamp"
-            interval="preserveStartEnd"
-            scale="time" 
-            type="number"
-            tickFormatter={dateFormatter}
-            domain={[data[0].timestamp, data[data.length - 1].timestamp]}
-          />
-          <YAxis
-            type="number"
-            domain={[0, 'dataMax']}
-          />
-          <Tooltip
-            formatter={(value) => [`${value}W`, "Solar Power"]}
-            labelFormatter={dateFormatter}
-          />
-          <Legend verticalAlign="top" height={36}/>
-          <Area name="Solar Power (W)" type="monotone" dataKey="solar_power" stroke="#474CD0" fill="#474CD0" />
-        </AreaChart>
-      </ResponsiveContainer>
+      <div style={{height: 400 + 'px'}}>
+        <ResponsiveContainer width="100%" height="100%">
+          <AreaChart
+            data={data}
+            margin={{
+              top: 10,
+              right: 30,
+              left: 0,
+              bottom: 0,
+            }}
+          >
+            <XAxis 
+              dataKey="timestamp"
+              interval="preserveStartEnd"
+              scale="time" 
+              type="number"
+              tickFormatter={dateFormatter}
+              domain={[data[0].timestamp, data[data.length - 1].timestamp]}
+            />
+            <YAxis
+              type="number"
+              domain={[0, 'dataMax']}
+            />
+            <Tooltip
+              formatter={(value) => [`${value}W`, "Solar Power"]}
+              labelFormatter={dateFormatter}
+            />
+            <Legend verticalAlign="top" height={36}/>
+            <Area name="Solar Power (W)" type="monotone" dataKey="solar_power" stroke="#474CD0" fill="#474CD0" />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
     );
   }
 }

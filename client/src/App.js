@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import socketIOClient from 'socket.io-client';
 import TimeAgo from 'react-timeago';
 import './App.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import DeviceText from './components/DeviceText';
+import Msg from './components/Msg';
 import SOCMonitor from './components/SOCMonitor';
 import ConsumptionMonitor from './components/ConsumptionMonitor';
 import SolarPowerMonitor from './components/SolarPowerMonitor';
@@ -50,24 +55,24 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <div className="App">
-            <div class="Devices">
-              {this.state.devices.map((device) => (
-                <div class="Device" key={device.address}>
-                  <div class="Device-Text"><b>{device.name}</b> - Victron Energy {device.data.model_name}</div>
-                  <div class="Device-Text">Last Update: <TimeAgo date={device.updates[device.updates.length-1].timestamp} /></div>
-                  {'remaining_mins' in  device.data && <div class="Device-Text">Time Remaining: {timeLeft(device.data.remaining_mins)}</div>}
-                  {'charge_state' in device.data && <div class="Device-Text">Charging State: {device.data.charge_state}</div>}
-                  {'soc' in device.data && <SOCMonitor data={device.updates}/>}
-                  {'consumption' in device.data && <ConsumptionMonitor data={device.updates}/>}
-                  {'solar_power' in device.data && <SolarPowerMonitor data={device.updates}/>}
-                  {'yield_today' in device.data && <SolarYieldMonitor data={device.updates}/>}
-                </div>
-              ))}
-            </div>
-          <div class="msg">{this.state.msg}</div>
-        </div>
+      <div className="App">
+        <Msg>{this.state.msg}</Msg>
+        <Container fluid>
+          <Row>
+            {this.state.devices.map((device) => (   
+              <Col xs={12} lg={6}>
+                <DeviceText><b>{device.name}</b> - Victron Energy {device.data.model_name}</DeviceText>
+                <DeviceText>Last Update: <TimeAgo date={device.updates[device.updates.length-1].timestamp} /></DeviceText>
+                {'remaining_mins' in  device.data && <DeviceText>Time Remaining: {timeLeft(device.data.remaining_mins)}</DeviceText>}
+                {'charge_state' in device.data && <DeviceText>Charging State: {device.data.charge_state}</DeviceText>}
+                {'soc' in device.data && <SOCMonitor data={device.updates}/>}
+                {'consumption' in device.data && <ConsumptionMonitor data={device.updates}/>}
+                {'solar_power' in device.data && <SolarPowerMonitor data={device.updates}/>}
+                {'yield_today' in device.data && <SolarYieldMonitor data={device.updates}/>}
+              </Col>
+            ))}
+          </Row>
+       </Container>
       </div>
     );
   }

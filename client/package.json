@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^5.2.3",
     "moment": "^2.29.4",
     "pluralize": "^8.0.0",
     "react": "^16.3.2",
+    "react-bootstrap": "^2.7.0",
     "react-dom": "^16.3.2",
     "react-scripts": "2.1.8",
     "react-timeago": "^4.4.0",
