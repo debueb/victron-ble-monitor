@@ -8,13 +8,12 @@ import Col from 'react-bootstrap/Col';
 import DeviceText from './components/DeviceText';
 import Msg from './components/Msg';
 import SOCMonitor from './components/SOCMonitor';
-import ConsumptionMonitor from './components/ConsumptionMonitor';
+import PowerMonitor from './components/PowerMonitor';
 import SolarPowerMonitor from './components/SolarPowerMonitor';
 import SolarYieldMonitor from './components/SolarYieldMonitor';
 import timeLeft from './timeLeft';
 
 class App extends Component {
-  // Initialize state
   state = {
     msg: "No data available.",
     devices: [],
@@ -66,7 +65,7 @@ class App extends Component {
                 {'remaining_mins' in  device.data && <DeviceText>Time Remaining: {timeLeft(device.data.remaining_mins)}</DeviceText>}
                 {'charge_state' in device.data && <DeviceText>Charging State: {device.data.charge_state}</DeviceText>}
                 {'soc' in device.data && <SOCMonitor data={device.updates}/>}
-                {'consumption' in device.data && <ConsumptionMonitor data={device.updates}/>}
+                {'power' in device.data && <PowerMonitor data={device.updates}/>}
                 {'solar_power' in device.data && <SolarPowerMonitor data={device.updates}/>}
                 {'yield_today' in device.data && <SolarYieldMonitor data={device.updates}/>}
               </Col>

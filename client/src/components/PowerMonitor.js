@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { AreaChart, Area, Legend, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import moment from 'moment';
 
-export default class ConsumptionMonitor extends PureComponent {
+export default class PowerMonitor extends PureComponent {
   
   render() {
 
@@ -34,14 +34,14 @@ export default class ConsumptionMonitor extends PureComponent {
             />
             <YAxis
               type="number"
-              domain={[dataMin => (dataMin > 0 ? 0 : dataMin), 'dataMax']}
+              domain={[dataMin => (dataMin > 0 ? 0 : dataMin), dataMax => (dataMax < 0 ? 0 : dataMax)]}
             />
             <Tooltip
-              formatter={(value) => [`${value}W`, "Consumption"]}
+              formatter={(value) => [`${value}W`, "Power"]}
               labelFormatter={dateFormatter}
             />
             <Legend verticalAlign="top" height={36}/>
-            <Area name="Consumption (W)" type="monotone" dataKey="consumption" stroke="#2EB6B2" fill="#2EB66E" />
+            <Area name="Power (W)" type="monotone" dataKey="consumption" stroke="#2EB6B2" fill="#2EB66E" />
           </AreaChart>
         </ResponsiveContainer>
       </div>
