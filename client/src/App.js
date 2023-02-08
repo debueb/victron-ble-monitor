@@ -4,7 +4,7 @@ import TimeAgo from 'react-timeago';
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import DeviceCol from './components/DeviceCol';
 import DeviceText from './components/DeviceText';
 import Msg from './components/Msg';
 import SOCMonitor from './components/SOCMonitor';
@@ -57,9 +57,9 @@ class App extends Component {
       <div className="App">
         <Msg>{this.state.msg}</Msg>
         <Container fluid>
-          <Row>
+          <Row style={{'min-height': 100 + 'vh'}}>
             {this.state.devices.map((device) => (   
-              <Col xs={12} lg={6}>
+              <DeviceCol>
                 <DeviceText><b>{device.name}</b> - Victron Energy {device.data.model_name}</DeviceText>
                 <DeviceText>Last Update: <TimeAgo date={device.updates[device.updates.length-1].timestamp} /></DeviceText>
                 {'remaining_mins' in  device.data && <DeviceText>Time Remaining: {timeLeft(device.data.remaining_mins)}</DeviceText>}
@@ -68,7 +68,7 @@ class App extends Component {
                 {'power' in device.data && <PowerMonitor data={device.updates}/>}
                 {'solar_power' in device.data && <SolarPowerMonitor data={device.updates}/>}
                 {'yield_today' in device.data && <SolarYieldMonitor data={device.updates}/>}
-              </Col>
+              </DeviceCol>
             ))}
           </Row>
        </Container>

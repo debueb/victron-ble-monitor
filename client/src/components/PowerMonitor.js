@@ -13,7 +13,7 @@ export default class PowerMonitor extends PureComponent {
     };
 
     return (
-      <div style={{height: 400 + 'px'}}>
+      <div style={{height: 382 + 'px'}}>
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             data={data}
