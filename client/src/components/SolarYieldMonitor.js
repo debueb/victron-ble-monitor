@@ -35,14 +35,14 @@ export default class SolarYieldMonitor extends PureComponent {
           />
           <YAxis
             type="number"
-            domain={['dataMin', 'dataMax']}
+            domain={[0, 'dataMax']}
           />
           <Tooltip
             formatter={(value) => [`${value}Wh`, "Solar Yield Per Day"]}
             labelFormatter={dateFormatter}
           />
           <Legend verticalAlign="top" height={36}/>
-          <Area name="Solar Yield Per Day (Wh)" type="monotone" dataKey="yield_today" stroke="#0452c7" fill="#4790d0" />
+          <Area name="Solar Yield Per Day (Wh)" type="monotone" dataKey="yield_today" stroke="#2E76B6" fill="#2EB6B2" />
         </AreaChart>
       </ResponsiveContainer>
     );

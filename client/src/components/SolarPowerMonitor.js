@@ -35,14 +35,14 @@ export default class SolarPowerMonitor extends PureComponent {
           />
           <YAxis
             type="number"
-            domain={['dataMin', 'dataMax']}
+            domain={[0, 'dataMax']}
           />
           <Tooltip
             formatter={(value) => [`${value}W`, "Solar Power"]}
             labelFormatter={dateFormatter}
           />
           <Legend verticalAlign="top" height={36}/>
-          <Area name="Solar Power (W)" type="monotone" dataKey="solar_power" stroke="#0452c7" fill="#4790d0" />
+          <Area name="Solar Power (W)" type="monotone" dataKey="solar_power" stroke="#474CD0" fill="#474CD0" />
         </AreaChart>
       </ResponsiveContainer>
     );

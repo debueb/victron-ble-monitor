@@ -42,7 +42,7 @@ export default class SOCMonitor extends PureComponent {
             labelFormatter={dateFormatter}
           />
           <Legend verticalAlign="top" height={36}/>
-          <Area name="SoC (%)" type="monotone" dataKey="soc" stroke="#0452c7" fill="#4790d0" />
+          <Area name="SoC (%)" type="monotone" dataKey="soc" stroke="#2E76B6" fill="#4790d0" />
         </AreaChart>
       </ResponsiveContainer>
     );

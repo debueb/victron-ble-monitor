@@ -35,14 +35,14 @@ export default class ConsumptionMonitor extends PureComponent {
           />
           <YAxis
             type="number"
-            domain={['dataMin', 'dataMax']}
+            domain={[dataMin => (dataMin > 0 ? 0 : dataMin), 'dataMax']}
           />
           <Tooltip
             formatter={(value) => [`${value}W`, "Consumption"]}
             labelFormatter={dateFormatter}
           />
           <Legend verticalAlign="top" height={36}/>
-          <Area name="Consumption (W)" type="monotone" dataKey="consumption" stroke="#0452c7" fill="#4790d0" />
+          <Area name="Consumption (W)" type="monotone" dataKey="consumption" stroke="#2EB6B2" fill="#2EB66E" />
         </AreaChart>
       </ResponsiveContainer>
     );
