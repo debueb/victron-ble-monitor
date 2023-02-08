@@ -11,6 +11,9 @@ export default class Msg extends PureComponent {
       <>
         <style type="text/css">
           {`
+            .alert-msg {
+              position: absolute;
+            }
             .alert-msg:empty {
               display: none;
             }

@@ -14,7 +14,7 @@ export default class DeviceCol extends PureComponent {
             .device-col {
               border-right: 1px solid #d5d5d5;
               border-bottom: 1px solid #d5d5d5;
-              padding: 20px;
+              padding: 1em;
             }
           `}
         </style>
