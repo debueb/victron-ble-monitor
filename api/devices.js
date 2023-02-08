@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const MAX_DEVICE_HISTORY_SIZE = 10;
+const MAX_DEVICE_HISTORY_SIZE = 100;
 
 const devices = (io) => {
 
