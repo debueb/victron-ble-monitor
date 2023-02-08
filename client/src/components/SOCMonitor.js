@@ -1,22 +1,22 @@
 import React, { PureComponent } from 'react';
-import { AreaChart, Area, Legend, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { AreaChart, Area, Legend, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import moment from 'moment';
 
-export default class BatteryMonitor extends PureComponent {
+export default class SOCMonitor extends PureComponent {
   
   render() {
 
     const {data} = this.props;
 
     const dateFormatter = date => {
-      return moment(date).format('DD.MM.YY HH:mm:ss');
+      return moment(date).format('DD.MM HH:mm:ss');
     };
 
     return (
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart
           width={500}
-          height={400}
+          height={350}
           data={data}
           margin={{
             top: 10,
@@ -26,13 +26,14 @@ export default class BatteryMonitor extends PureComponent {
           }}
         >
           <XAxis 
-            dataKey="timestamp" 
+            dataKey="timestamp"
+            interval="preserveStartEnd"
             scale="time" 
             type="number"
             tickFormatter={dateFormatter}
             domain={[data[0].timestamp, data[data.length - 1].timestamp]}
           />
-          <YAxis 
+          <YAxis
             type="number" 
             domain={[0, 100]}
           />
@@ -41,7 +42,7 @@ export default class BatteryMonitor extends PureComponent {
             labelFormatter={dateFormatter}
           />
           <Legend verticalAlign="top" height={36}/>
-          <Area name="SoC (%)" type="monotone" dataKey="soc" stroke="#272622" fill="#4790d0" />
+          <Area name="SoC (%)" type="monotone" dataKey="soc" stroke="#0452c7" fill="#4790d0" />
         </AreaChart>
       </ResponsiveContainer>
     );

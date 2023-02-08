@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import socketIOClient from 'socket.io-client';
 import TimeAgo from 'react-timeago';
 import './App.css';
-import BatteryMonitor from './BatteryMonitor';
+import SOCMonitor from './components/SOCMonitor';
+import ConsumptionMonitor from './components/ConsumptionMonitor';
+import SolarPowerMonitor from './components/SolarPowerMonitor';
+import SolarYieldMonitor from './components/SolarYieldMonitor';
+import timeLeft from './timeLeft';
 
 class App extends Component {
   // Initialize state
@@ -53,12 +57,12 @@ class App extends Component {
                 <div class="Device" key={device.address}>
                   <div class="Device-Text"><b>{device.name}</b> - Victron Energy {device.data.model_name}</div>
                   <div class="Device-Text">Last Update: <TimeAgo date={device.updates[device.updates.length-1].timestamp} /></div>
-                  {device.data.soc && 
-                    <>
-                      <div class="Device-Text">Last SoC (%): {device.data.soc}</div>
-                      <BatteryMonitor data={device.updates}/>
-                    </>
-                  }
+                  {'remaining_mins' in  device.data && <div class="Device-Text">Time Remaining: {timeLeft(device.data.remaining_mins)}</div>}
+                  {'charge_state' in device.data && <div class="Device-Text">Charging State: {device.data.charge_state}</div>}
+                  {'soc' in device.data && <SOCMonitor data={device.updates}/>}
+                  {'consumption' in device.data && <ConsumptionMonitor data={device.updates}/>}
+                  {'solar_power' in device.data && <SolarPowerMonitor data={device.updates}/>}
+                  {'yield_today' in device.data && <SolarYieldMonitor data={device.updates}/>}
                 </div>
               ))}
             </div>

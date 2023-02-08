@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "moment": "^2.29.4",
+    "pluralize": "^8.0.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-scripts": "2.1.8",
