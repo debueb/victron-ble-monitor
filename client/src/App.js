@@ -60,14 +60,14 @@ class App extends Component {
           <Row style={{'min-height': 100 + 'vh'}}>
             {this.state.devices.map((device) => (   
               <DeviceCol>
-                <DeviceText><b>{device.name}</b> - Victron Energy {device.data.model_name}</DeviceText>
+                <DeviceText><b>{device.name}</b> - Victron Energy {device.updates[0].model_name}</DeviceText>
                 <DeviceText>Last Update: <TimeAgo date={device.updates[device.updates.length-1].timestamp} /></DeviceText>
-                {'remaining_mins' in  device.data && <DeviceText>Time Remaining: {timeLeft(device.data.remaining_mins)}</DeviceText>}
-                {'charge_state' in device.data && <DeviceText>Charging State: {device.data.charge_state}</DeviceText>}
-                {'soc' in device.data && <SOCMonitor data={device.updates}/>}
-                {'power' in device.data && <PowerMonitor data={device.updates}/>}
-                {'solar_power' in device.data && <SolarPowerMonitor data={device.updates}/>}
-                {'yield_today' in device.data && <SolarYieldMonitor data={device.updates}/>}
+                {'remaining_mins' in  device.updates[0] && <DeviceText>Time Remaining: {timeLeft(device.updates[0].remaining_mins)}</DeviceText>}
+                {'charge_state' in device.updates[0] && <DeviceText>Charging State: {device.updates[0].charge_state}</DeviceText>}
+                {'soc' in device.updates[0] && <SOCMonitor data={device.updates}/>}
+                {'power' in device.updates[0] && <PowerMonitor data={device.updates}/>}
+                {'solar_power' in device.updates[0] && <SolarPowerMonitor data={device.updates}/>}
+                {'yield_today' in device.updates[0] && <SolarYieldMonitor data={device.updates}/>}
               </DeviceCol>
             ))}
           </Row>
