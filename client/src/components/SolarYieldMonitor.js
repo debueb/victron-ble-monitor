@@ -9,7 +9,7 @@ export default class SolarYieldMonitor extends PureComponent {
     const {data} = this.props;
 
     const dateFormatter = date => {
-      return moment(date).format('DD.MM.YY HH:mm:ss');
+      return moment(date).format('DD.MM HH:mm:ss');
     };
 
     return (
