@@ -2,6 +2,8 @@
 
 Monitor for Bluetooth Low Energy Advertisements of [Victron Energy](http://victronenergy.com/) devices. Currently tested devices: BMV-712 and SmartSolar MPPT 100/50
 
+![screenshot](https://raw.githubusercontent.com/debueb/victron-ble-monitor/main/screenshot.png "Screenshot")
+
 ## prerequisites
 - install [victron-ble-bridge](https://github.com/debueb/victron-ble-bridge) on a device that is in bluetooth range of your Victron devices and can run python3
 
