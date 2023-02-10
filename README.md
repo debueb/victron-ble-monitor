@@ -1,6 +1,6 @@
 # victron-ble-monitor
 
-Monitor for Bluetooth Low Energy Advertisements of [Victron Energy](http://victronenergy.com/) devices. Currently tested devices: BMV-712 and SmartSolar MPPT 100/50
+Monitor for Bluetooth [Low Energy Advertisements](https://community.victronenergy.com/questions/93919/victron-bluetooth-ble-protocol-publication.html) of [Victron Energy](http://victronenergy.com/) devices. Currently tested devices: BMV-712 and SmartSolar MPPT 100/50
 
 ![screenshot](https://raw.githubusercontent.com/debueb/victron-ble-monitor/main/screenshot.png "Screenshot")
 
