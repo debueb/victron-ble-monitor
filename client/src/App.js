@@ -62,9 +62,9 @@ class App extends Component {
               <DeviceCol>
                 <DeviceText><b>{device.name}</b> - Victron Energy {device.model_name}</DeviceText>
                 <DeviceText>Last Update: <TimeAgo date={device.updates[device.updates.length-1].timestamp} /></DeviceText>
-                {'device_state' in  device.updates[0] && <DeviceText>Device State: {timeLeft(device.updates[0].device_state)}</DeviceText>}
-                {'input_voltage' in  device.updates[0] && <DeviceText>Input Voltage: {timeLeft(device.updates[0].input_voltage)}</DeviceText>}
-                {'output_voltage' in  device.updates[0] && <DeviceText>Output Voltage: {timeLeft(device.updates[0].output_voltage)}</DeviceText>}
+                {'device_state' in  device.updates[0] && <DeviceText>Device State: device.updates[0].device_state)</DeviceText>}
+                {'input_voltage' in  device.updates[0] && <DeviceText>Input Voltage: device.updates[0].input_voltage)</DeviceText>}
+                {'output_voltage' in  device.updates[0] && <DeviceText>Output Voltage: device.updates[0].output_voltage)</DeviceText>}
                 {'remaining_mins' in  device.updates[0] && <DeviceText>Time Remaining: {timeLeft(device.updates[0].remaining_mins)}</DeviceText>}
                 {'charge_state' in device.updates[0] && <DeviceText>Charging State: {device.updates[0].charge_state}</DeviceText>}
                 {'soc' in device.updates[0] && <SOCMonitor data={device.updates}/>}
