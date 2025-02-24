@@ -18,7 +18,7 @@ export default class DeviceCol extends PureComponent {
             }
           `}
         </style>
-        <Col xs={12} lg={6} className="device-col">{children}</Col>
+        <Col xs={12} className="device-col">{children}</Col>
       </>
     );
   }
