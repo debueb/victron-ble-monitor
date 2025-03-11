@@ -18,6 +18,7 @@ const devices = (io) => {
 
   router.post('/api/device', (req, res) => {
     const device = req.body;
+    console.log(device);
     let updates = [];
     if (deviceMap.has(device.address)){
       updates = deviceMap.get(device.address).updates;
