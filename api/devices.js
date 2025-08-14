@@ -22,7 +22,7 @@ const devices = (io) => {
     for (let device in devices) {
       let updates = [];
       if (deviceMap.has(device.address)){
-        console.oog("existing device");
+        console.log("existing device");
         console.log(deviceMap.get(device.address));
         updates = deviceMap.get(device.address).updates;
       }
