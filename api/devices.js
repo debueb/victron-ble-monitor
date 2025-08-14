@@ -19,7 +19,7 @@ const devices = (io) => {
   router.post('/api/devices', (req, res) => {
     const devices = req.body;
     console.log(devices);
-    for (let device in devices) {
+    for (let device of devices) {
       let updates = [];
       if (deviceMap.has(device.address)){
         console.log("existing device");
