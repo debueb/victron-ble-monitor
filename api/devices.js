@@ -16,19 +16,20 @@ const devices = (io) => {
     res.json(sortAndJsonize())
   });
 
-  router.post('/api/device', (req, res) => {
-    const device = req.body;
-    let updates = [];
-    if (deviceMap.has(device.address)){
-      updates = deviceMap.get(device.address).updates;
+  router.post('/api/devices', (req, res) => {
+    const devices = req.body;
+    for (let device in devices) {
+      let updates = [];
+      if (deviceMap.has(device.address)){
+        updates = deviceMap.get(device.address).updates;
+      }
+      updates.push(device.data);
+      if (updates.length>MAX_DEVICE_HISTORY_SIZE){
+        updates.shift();
+      }
+      device.updates = updates;
+      deviceMap.set(device.address, device);
     }
-    updates.push(device.data);
-    if (updates.length>MAX_DEVICE_HISTORY_SIZE){
-      updates.shift();
-    }
-    device.updates = updates;
-    deviceMap.set(device.address, device);
-
     io.emit('DevicesUpdate', sortAndJsonize());
     res.status(200).end()
   });
