@@ -22,8 +22,6 @@ const devices = (io) => {
     for (let device of devices) {
       let updates = [];
       if (deviceMap.has(device.address)){
-        console.log("existing device");
-        console.log(deviceMap.get(device.address));
         updates = deviceMap.get(device.address).updates;
       }
       updates.push(device.data);
@@ -32,7 +30,6 @@ const devices = (io) => {
       }
       device.updates = updates;
       deviceMap.set(device.address, device);
-      console.log(deviceMap);
     }
     io.emit('DevicesUpdate', sortAndJsonize());
     res.status(200).end()
