@@ -30,8 +30,8 @@ const devices = (io) => {
       }
       device.updates = updates;
       deviceMap.set(device.address, device);
+      console.log(deviceMap);
     }
-    console.log(deviceMap);
     io.emit('DevicesUpdate', sortAndJsonize());
     res.status(200).end()
   });
